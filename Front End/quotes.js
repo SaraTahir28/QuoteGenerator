@@ -24,4 +24,24 @@ document.getElementById("new-quote").addEventListener("click", () => {
   displayRandomquote();
 });
 
+document.getElementById("add-quote-form").addEventListener("submit",async(e)=>{
+  e.preventDefault() //prevents page from refreshing on form submission
+  const quote = document.getElementById("new-quote-text").value;
+  const author = document.getElementById("new-quote-author").value;
+  try { 
+    const response = await fetch("http://127.0.0.1:3000/", {
+        method: "POST", 
+        headers: { "Content-Type": "application/json" }, 
+        body: JSON.stringify({ quote, author }) }); 
+    const text = await response.text(); 
+    console.log("Server response:", text); 
+
+    alert("Quote added!"); e.target.reset(); // clears the form 
+     } 
+    catch (error) { 
+      console.error("Failed to add quote:", error); alert("Error adding quote"); 
+    } 
+  });
+
+
 displayRandomquote()
