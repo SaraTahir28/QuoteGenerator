@@ -1,6 +1,8 @@
 import express from "express";
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 const port = 3000;
 
 const quotes = [
@@ -21,9 +23,9 @@ function randomQuote() {
 
 app.get("/", (req, res) => {
   const quote = randomQuote();
-  res.send(`"${quote.quote}" -${quote.author}`);
+  res.json(quote) //sends quote to frontend as JSON rather than a string, so that frontend can display as it pleases.
 });
-
+// 
 app.post("/", (req, res) => {
   const bodyBytes = [];
   req.on("data", chunk => bodyBytes.push(...chunk));
