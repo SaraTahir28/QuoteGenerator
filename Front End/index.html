@@ -8,11 +8,16 @@
     <script defer src="quotes.js"></script>
   </head>
   <body>
-    <h1>Hello there</h1>
-    <div class="quote-box">
+    <h1>Quotation Journal</h1>
+   <div class="quote-box">
   <p id="quote">Quote goes here...</p>
   <p id="author">Author goes here...</p>
-</div>
-    <button type="button" id="new-quote">New quote</button>
+   </div>
+   <form id="add-quote-form">
+    <input id="new-quote-text" placeholder="Quote" required>
+    <input id="new-quote-author" placeholder="Author" required>
+    <button type="submit">Add Quote</button>
+   </form>
+    <button type="button" id="new-quote">New Quote</button>
   </body>
 </html>
