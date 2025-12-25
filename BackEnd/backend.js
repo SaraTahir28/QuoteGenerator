@@ -3,7 +3,7 @@ import cors from "cors";
 
 const app = express();
 app.use(cors());
-const port = 3000;
+const PORT = process.env.PORT || 3000; //adding the port given by coolify so the app works in production.
 
 const quotes = [
   {
@@ -52,6 +52,5 @@ app.post("/", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.error(`Quote server listening on port ${port}`);
-});
+app.listen(PORT, "0.0.0.0", () =>{ 
+  console.log(`Quote server listening on port ${PORT}`); });
