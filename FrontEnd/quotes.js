@@ -36,16 +36,21 @@ document.getElementById("add-quote-form").addEventListener("submit",async(e)=>{
     const response = await fetch("https://mscgsco4cg4wkok4g4go0s0c.hosting.codeyourfuture.io/", {
         method: "POST", 
         headers: { "Content-Type": "application/json" }, 
-        body: JSON.stringify({ quote, author }) }); 
+        body: JSON.stringify({ quote, author }) 
+      }); 
     const text = await response.text(); 
     console.log("Server response:", text); 
-
-    alert("Quote added!"); e.target.reset(); // clears the form 
+  //show backend error message to user 
+  if(!response.ok){
+    alert("Error: " + text);
+  }
+    alert("Quote added!");
+     e.target.reset(); // clears the form 
      } 
     catch (error) { 
-      console.error("Failed to add quote:", error); alert("Error adding quote"); 
+      console.error("Failed to add quote:", error);
+       alert("Error adding quote"); 
     } 
   });
-
 
 displayRandomquote()
