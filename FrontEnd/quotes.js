@@ -28,6 +28,10 @@ document.getElementById("add-quote-form").addEventListener("submit",async(e)=>{
   e.preventDefault() //prevents page from refreshing on form submission
   const quote = document.getElementById("new-quote-text").value;
   const author = document.getElementById("new-quote-author").value;
+  //Adding Validation to check both author and quote are added
+  if (!quote.trim() || !author.trim()) 
+    { alert("Both quote and author are required."); return;
+    }
   try { 
     const response = await fetch("https://mscgsco4cg4wkok4g4go0s0c.hosting.codeyourfuture.io/", {
         method: "POST", 

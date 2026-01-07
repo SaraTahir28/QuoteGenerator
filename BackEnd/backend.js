@@ -44,6 +44,11 @@ app.post("/", (req, res) => {
       res.status(400).send("Expected body to be a JSON object containing keys quote and author.");
       return;
     }
+    //New Validation
+    if (!body.quote.trim() || !body.author.trim()) { 
+      res.status(400).send("Quote and author cannot be empty."); 
+      return; 
+    }
     quotes.push({
       quote: body.quote,
       author: body.author,
